@@ -11,7 +11,7 @@ def webhook():
         for alert in data['alerts']:
             if alert['status'] == 'firing':
                 print("Alert firing:", alert['labels']['alertname'])  # Log which alert is firing
-                os.system('ansible-playbook /home/pankajarya/Projects/restart_nginx.yml')
+                os.system('ansible-playbook restart_nginx.yml')
     return '', 200
 
 if __name__ == '__main__':
