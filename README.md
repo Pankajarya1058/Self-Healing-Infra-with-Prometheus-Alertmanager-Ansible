@@ -11,6 +11,6 @@ Objective of this repository is to automatically detect service failures, get th
 - [Nginx](https://docs.nginx.com/nginx/admin-guide/installing-nginx/installing-nginx-open-source/)
 
 ### Mini Guide of this Project
-Our service (Nginx) is running on localhost and API (which is created by using Flask) will automatically run the Ansible playbook. After triggering the webhook through alertManager and Prometheus.
+Our service ([Nginx](https://docs.nginx.com/nginx/admin-guide/installing-nginx/installing-nginx-open-source/)) is running on localhost and API (which is created by using [Flask](https://flask.palletsprojects.com/en/stable/installation/#install-flask)) will automatically run the [Ansible](https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html#pipx-install) playbook. After triggering the webhook through [Alertmanager](https://prometheus.io/download/#alertmanager) and [Prometheus](https://prometheus.io/download/#prometheus).
 
 
