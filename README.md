@@ -155,4 +155,33 @@ if __name__ == '__main__':
         state: restarted
 ```
 
+**7. Now, Restart services**
+```
+sudo systemctl restart prometheus alertmanager 
+```
+
+**8. Run app.py**
+
+```
+python3 app.py
+```
+
+## Now, We will test above task
+
+#### Access Prometheus
+```
+http://<server-ip>:9090
+```
+
+#### Stop the Nginx service
+```
+sudo systemctl stop nginx
+```
+
+After Stopping Nginx service, alertmanager get the "NginxDown" alert, we can see in Prometheus dashboard...
+
+After detects "NginxDown" alert, webHook will trigger and app.py will run the Ansible Playbook which will restart the Nginx service.
+
+
+
 
