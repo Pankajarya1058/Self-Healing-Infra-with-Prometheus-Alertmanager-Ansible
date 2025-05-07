@@ -19,7 +19,7 @@ Our service ([Nginx](https://docs.nginx.com/nginx/admin-guide/installing-nginx/i
 **1. Install required packages**
 ```
 sudo apt-get update
-sudo apt-get -y install nginx ansible-core prometheus prometheus-alertmanger 
+sudo apt-get install nginx ansible-core Prometheus prometheus-alertmanager prometheus-blackbox-exporter
 ``` 
 **2. Configure prometheus**
 
@@ -160,9 +160,23 @@ if __name__ == '__main__':
 sudo systemctl restart prometheus alertmanager 
 ```
 
-**8. Run app.py**
+**8. Install Flask and Run app.py**
 
+**Note:-** To run the "app.py" file. we have to install "Flask", perform following commands to install "Flask".
 ```
+sudo apt install python3.12-venv
+```
+```
+python3 -m venv .venv
+```
+```
+. .venv/bin/activate
+```
+```
+pip install Flask
+```
+```
+# run app.py file
 python3 app.py
 ```
 
@@ -178,9 +192,13 @@ http://<server-ip>:9090
 sudo systemctl stop nginx
 ```
 
-After Stopping Nginx service, alertmanager get the "NginxDown" alert, we can see in Prometheus dashboard...
+### Outcome:
 
-After detects "NginxDown" alert, webHook will trigger and app.py will run the Ansible Playbook which will restart the Nginx service.
+- Prometheus scrapes Nginx metrics, and if Nginx is down, it triggers the NginxDown alert.
+- Alertmanager forwards the alert to the Flask app via a webhook.
+- The Flask app detects the alert and runs an Ansible playbook to restart Nginx.
+
+**This automation allows you to monitor Nginx health and automatically restart it when it goes down.**
 
 
 
